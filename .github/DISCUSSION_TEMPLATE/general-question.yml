@@ -1,0 +1,39 @@
+title: General question
+labels:
+  - question
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ask about on-device / on-edge LLMs on mobile — model choice, runtimes, privacy architecture, or DataSapien SDK.
+
+        For SDK integration issues, prefer the [developer docs](https://docs.datasapien.com/docs/category/quickstart) first. For production use cases you want to share, use the **Production use case** template instead.
+
+  - type: dropdown
+    id: topic
+    attributes:
+      label: Topic
+      options:
+        - Model selection
+        - Runtime (llama.cpp, LiteRT, etc.)
+        - Privacy / on-device architecture
+        - DataSapien Mobile SDK
+        - Journeys and agentic flows
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+      description: What are you trying to do, and what have you already tried?
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context (optional)
+      description: Platform, device class, offline requirements, etc.
+      placeholder: e.g. iOS app, need offline summarization on 4GB RAM devices.

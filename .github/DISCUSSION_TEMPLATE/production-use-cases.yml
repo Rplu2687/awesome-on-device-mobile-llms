@@ -1,0 +1,73 @@
+title: Production use case
+labels:
+  - production-use-case
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share an on-edge LLM use case you are shipping or exploring. This helps the DataSapien team prioritize runtime work, lab reports, and README updates.
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - Android
+        - iOS
+        - Flutter
+        - React Native
+        - Cross-platform
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: integration
+    attributes:
+      label: Integration approach
+      options:
+        - DataSapien Mobile SDK
+        - DIY (llama.cpp or other runtime in app)
+        - Evaluating / not started yet
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: task
+    attributes:
+      label: Task and user flow
+      description: What does the user do, and what should the on-device model accomplish?
+      placeholder: e.g. Classify search intent (support vs sales) and route the UI immediately after submit.
+    validations:
+      required: true
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Device and latency constraints
+      description: Target devices, offline requirement, latency budget, model size limits.
+      placeholder: e.g. Mid-range Android, offline required, <500ms after model load, max ~2GB model download.
+    validations:
+      required: true
+
+  - type: textarea
+    id: model_runtime
+    attributes:
+      label: Model and runtime
+      description: What have you tried or plan to use?
+      placeholder: e.g. Qwen 2.5 3B Q4_K_M via llama.cpp; LiteRT under evaluation.
+
+  - type: textarea
+    id: privacy
+    attributes:
+      label: Privacy requirements
+      description: Must data stay on-device? Any cloud fallback?
+      placeholder: e.g. All inference and user context must stay on the device.
+
+  - type: checkboxes
+    id: share
+    attributes:
+      label: Sharing
+      options:
+        - label: I am OK with this use case being referenced (anonymized) in the README or a future lab report.
