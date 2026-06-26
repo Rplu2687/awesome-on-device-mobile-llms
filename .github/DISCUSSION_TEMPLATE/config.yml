@@ -1,9 +1,0 @@
-blank_issues_enabled: false
-
-contact_links:
-  - name: DataSapien Developer Docs
-    url: https://docs.datasapien.com/docs/category/quickstart
-    about: SDK installation, Intelligence Service, and Hello World Journey
-  - name: DataSapien Blog — Lab Reports
-    url: https://datasapien.com/blog/
-    about: On-device LLM lab reports and production learnings
